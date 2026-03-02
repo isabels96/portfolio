@@ -1,0 +1,329 @@
+* --- RESET E BASE --- */
+/* O seletor '*' seleciona absolutamente todos os elementos da página */
+* {
+    margin: 0;          /* Remove as margens externas padrão que os navegadores aplicam */
+    padding: 0;         /* Remove os preenchimentos internos padrão */
+    box-sizing: border-box; /* Define que o tamanho total de um elemento inclui padding e bordas, evitando quebras de layout */
+}
+ 
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Define a fonte, priorizando Helvetica e caindo para Arial se necessário */
+    line-height: 1.6;   /* Define a altura da linha, deixando o texto mais espaçado e fácil de ler */
+    color: #333333;     /* Define uma cor cinza escuro para o texto para não agredir os olhos como o preto puro */
+    background-color: #ffffff; /* Fundo branco limpo */
+   
+    /* CONFIGURAÇÃO DO STICKY FOOTER (Rodapé no final) */
+    display: flex;          /* Transforma o body em um container flexível */
+    flex-direction: column; /* Alinha os filhos (header, main, footer) em uma coluna vertical */
+    min-height: 100vh;      /* O body terá no mínimo 100% da altura da janela do navegador (Viewport Height) */
+}
+ 
+/* Container centralizador para manter o conteúdo organizado no meio da tela */
+.container {
+    max-width: 1000px;  /* Define que o site não vai esticar mais que 1000 pixels em telas grandes */
+    margin: 0 auto;     /* Centraliza o container horizontalmente (cima/baixo 0, esquerda/direita automático) */
+    padding: 0 20px;    /* Adiciona um respiro de 20px nas laterais para o texto não encostar nas bordas do celular */
+}
+ 
+/* --- CABEÇALHO --- */
+header {
+    padding: 30px 0;    /* Espaço em cima e embaixo do topo do site */
+    border-bottom: 1px solid #eeeeee; /* Cria uma linha fina e elegante separando o topo do conteúdo */
+}
+ 
+nav {
+    display: flex;              /* Ativa o Flexbox para alinhar itens horizontalmente */
+    justify-content: space-between; /* Empurra a Logo para um lado e os Links para o outro */
+    align-items: center;        /* Alinha verticalmente o logo e os links no centro da barra */
+}
+ 
+.logo {
+    font-weight: 800;    /* Deixa o texto do logo bem grosso/negrito */
+    letter-spacing: 2px; /* Aumenta o espaço entre as letras, dando um ar moderno */
+    font-size: 1.2rem;   /* Tamanho do texto relativo à raiz (rem) */
+}
+ 
+.nav-links {
+    display: flex;       /* Coloca os itens da lista (li) um ao lado do outro */
+    list-style: none;    /* Remove as bolinhas/marcadores padrão da lista */
+    gap: 30px;           /* Cria um espaçamento uniforme de 30px entre cada link */
+}
+ 
+.nav-links a {
+    text-decoration: none; /* Remove o sublinhado padrão azul dos links */
+    color: #666666;        /* Cinza médio para os links */
+    font-size: 0.9rem;     /* Fonte ligeiramente menor que o padrão */
+    transition: color 0.3s; /* Faz com que a mudança de cor no hover seja suave, durando 0.3 segundos */
+}
+ 
+.nav-links a:hover {
+    color: #000000;      /* Quando o mouse passa por cima, o link fica preto total */
+}
+ 
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+    /* A LINHA MÁGICA: O flex: 1 diz para essa seção "crescer" e ocupar todo o espaço vazio disponível,
+       empurrando o footer obrigatoriamente para a base da página. */
+    flex: 1;
+}
+ 
+/* Seção de destaque inicial */
+.hero {
+    padding: 100px 20px; /* Grande espaçamento interno para dar foco ao título principal */
+}
+ 
+.hero h1 {
+    font-size: 3rem;     /* Título bem grande para impacto visual */
+    line-height: 1.2;    /* Ajusta o espaçamento das linhas do título para ficarem mais próximas */
+    color: #1a1a1a;
+    margin-bottom: 20px; /* Empurra o parágrafo abaixo para longe */
+}
+ 
+.hero h1 span {
+    color: #999999;      /* Aplica uma cor cinza claro apenas na palavra dentro do <span> no HTML */
+}
+ 
+.hero p {
+    font-size: 1.2rem;   /* Aumenta um pouco o texto de subtítulo */
+    color: #666666;
+}
+ 
+/* --- GRID DE PROJETOS --- */
+.section-title {
+    font-size: 0.8rem;   /* Título da seção pequeno */
+    text-transform: uppercase; /* Transforma todas as letras em maiúsculas automaticamente */
+    letter-spacing: 3px; /* Espaçamento largo entre letras (estilo editorial) */
+    color: #bbbbbb;
+    margin-bottom: 40px;
+}
+ 
+.grid {
+    display: grid;       /* Ativa o modo de Grade (Grid Layout) */
+    /* Cria colunas automáticas que se ajustam (auto-fit). Cada coluna tem no mínimo 280px
+       e no máximo 1 fração do espaço disponível (1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;           /* Espaçamento entre os "quadrados" da grade */
+    margin-bottom: 80px;
+}
+ 
+.card {
+    padding: 40px;
+    background-color: #f9f9f9; /* Fundo cinza claríssimo */
+    border: 1px solid #eeeeee;
+    /* Define que a animação de transform e sombra durará 0.3s ao passar o mouse */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+ 
+.card:hover {
+    transform: translateY(-5px); /* Move o card 5 pixels para cima, criando efeito de flutuação */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Adiciona uma sombra suave ao redor do card */
+}
+ 
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+ 
+/* --- RODAPÉ --- */
+footer {
+    background-color: #1a1a1a; /* Fundo preto escuro */
+    color: #ffffff;            /* Texto branco para contraste */
+    padding: 50px 0;           /* Altura interna do rodapé */
+}
+ 
+footer .container {
+    display: flex;              /* Coloca texto e redes sociais lado a lado no footer */
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+footer p {
+    font-size: 0.8rem;
+    color: #aaaaaa;            /* Cinza médio para o copyright */
+}
+ 
+.socials a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;         /* Espaço entre os links sociais */
+    font-size: 0.8rem;
+    border-bottom: 1px solid transparent; /* Cria uma borda invisível por padrão */
+    transition: 0.3s;
+}
+ 
+.socials a:hover {
+    border-bottom: 1px solid #ffffff; /* Mostra a borda (linha embaixo) ao passar o mouse */
+}
+ 
+/* --- RESPONSIVIDADE (Ajustes para celulares) --- */
+/* Se a tela for menor ou igual a 600px, as regras abaixo são aplicadas */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2rem;       /* Diminui o tamanho do título para caber na tela do celular */
+    }
+   
+    footer .container {
+        flex-direction: column; /* Coloca os itens do footer um em cima do outro */
+        gap: 20px;              /* Dá espaço entre o copyright e as redes sociais */
+        text-align: center;     /* Centraliza o texto */
+    }
+   
+    .nav-links {
+        display: none;          /* Esconde o menu no celular para não quebrar o layout */
+    }
+}
+/* Container centralizador para manter o conteúdo organizado no meio da tela */
+.container {
+    max-width: 1000px;  /* Define que o site não vai esticar mais que 1000 pixels em telas grandes */
+    margin: 0 auto;     /* Centraliza o container horizontalmente (cima/baixo 0, esquerda/direita automático) */
+    padding: 0 20px;    /* Adiciona um respiro de 20px nas laterais para o texto não encostar nas bordas do celular */
+}
+ 
+/* --- CABEÇALHO --- */
+header {
+    padding: 30px 0;    /* Espaço em cima e embaixo do topo do site */
+    border-bottom: 1px solid #eeeeee; /* Cria uma linha fina e elegante separando o topo do conteúdo */
+}
+ 
+nav {
+    display: flex;              /* Ativa o Flexbox para alinhar itens horizontalmente */
+    justify-content: space-between; /* Empurra a Logo para um lado e os Links para o outro */
+    align-items: center;        /* Alinha verticalmente o logo e os links no centro da barra */
+}
+ 
+.logo {
+    font-weight: 800;    /* Deixa o texto do logo bem grosso/negrito */
+    letter-spacing: 2px; /* Aumenta o espaço entre as letras, dando um ar moderno */
+    font-size: 1.2rem;   /* Tamanho do texto relativo à raiz (rem) */
+}
+ 
+.nav-links {
+    display: flex;       /* Coloca os itens da lista (li) um ao lado do outro */
+    list-style: none;    /* Remove as bolinhas/marcadores padrão da lista */
+    gap: 30px;           /* Cria um espaçamento uniforme de 30px entre cada link */
+}
+ 
+.nav-links a {
+    text-decoration: none; /* Remove o sublinhado padrão azul dos links */
+    color: #666666;        /* Cinza médio para os links */
+    font-size: 0.9rem;     /* Fonte ligeiramente menor que o padrão */
+    transition: color 0.3s; /* Faz com que a mudança de cor no hover seja suave, durando 0.3 segundos */
+}
+ 
+.nav-links a:hover {
+    color: #000000;      /* Quando o mouse passa por cima, o link fica preto total */
+}
+ 
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+    /* A LINHA MÁGICA: O flex: 1 diz para essa seção "crescer" e ocupar todo o espaço vazio disponível,
+       empurrando o footer obrigatoriamente para a base da página. */
+    flex: 1;
+}
+ 
+/* Seção de destaque inicial */
+.hero {
+    padding: 100px 20px; /* Grande espaçamento interno para dar foco ao título principal */
+}
+ 
+.hero h1 {
+    font-size: 3rem;     /* Título bem grande para impacto visual */
+    line-height: 1.2;    /* Ajusta o espaçamento das linhas do título para ficarem mais próximas */
+    color: #1a1a1a;
+    margin-bottom: 20px; /* Empurra o parágrafo abaixo para longe */
+}
+ 
+.hero h1 span {
+    color: #999999;      /* Aplica uma cor cinza claro apenas na palavra dentro do <span> no HTML */
+}
+ 
+.hero p {
+    font-size: 1.2rem;   /* Aumenta um pouco o texto de subtítulo */
+    color: #666666;
+}
+ 
+/* --- GRID DE PROJETOS --- */
+.section-title {
+    font-size: 0.8rem;   /* Título da seção pequeno */
+    text-transform: uppercase; /* Transforma todas as letras em maiúsculas automaticamente */
+    letter-spacing: 3px; /* Espaçamento largo entre letras (estilo editorial) */
+    color: #bbbbbb;
+    margin-bottom: 40px;
+}
+ 
+.grid {
+    display: grid;       /* Ativa o modo de Grade (Grid Layout) */
+    /* Cria colunas automáticas que se ajustam (auto-fit). Cada coluna tem no mínimo 280px
+       e no máximo 1 fração do espaço disponível (1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;           /* Espaçamento entre os "quadrados" da grade */
+    margin-bottom: 80px;
+}
+ 
+.card {
+    padding: 40px;
+    background-color: #f9f9f9; /* Fundo cinza claríssimo */
+    border: 1px solid #eeeeee;
+    /* Define que a animação de transform e sombra durará 0.3s ao passar o mouse */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+ 
+.card:hover {
+    transform: translateY(-5px); /* Move o card 5 pixels para cima, criando efeito de flutuação */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Adiciona uma sombra suave ao redor do card */
+}
+ 
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+ 
+/* --- RODAPÉ --- */
+footer {
+    background-color: #1a1a1a; /* Fundo preto escuro */
+    color: #ffffff;            /* Texto branco para contraste */
+    padding: 50px 0;           /* Altura interna do rodapé */
+}
+ 
+footer .container {
+    display: flex;              /* Coloca texto e redes sociais lado a lado no footer */
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+footer p {
+    font-size: 0.8rem;
+    color: #aaaaaa;            /* Cinza médio para o copyright */
+}
+ 
+.socials a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;         /* Espaço entre os links sociais */
+    font-size: 0.8rem;
+    border-bottom: 1px solid transparent; /* Cria uma borda invisível por padrão */
+    transition: 0.3s;
+}
+ 
+.socials a:hover {
+    border-bottom: 1px solid #ffffff; /* Mostra a borda (linha embaixo) ao passar o mouse */
+}
+ 
+/* --- RESPONSIVIDADE (Ajustes para celulares) --- */
+/* Se a tela for menor ou igual a 600px, as regras abaixo são aplicadas */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2rem;       /* Diminui o tamanho do título para caber na tela do celular */
+    }
+
+    footer .container {
+        flex-direction: column; /* Coloca os itens do footer um em cima do outro */
+        gap: 20px;              /* Dá espaço entre o copyright e as redes sociais */
+        text-align: center;     /* Centraliza o texto */
+    }
+   
+    .nav-links {
+        display: none;          /* Esconde o menu no celular para não quebrar o layout */
+    }
+}
+ 
